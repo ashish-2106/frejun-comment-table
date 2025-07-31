@@ -1,25 +1,31 @@
-import logo from './logo.svg';
+import React, { useState } from 'react';
+import useCommentsData from './hooks/useCommentsData';
+import Navbar from './components/Navbar';
+import CommentsTable from './components/CommentsTable';
 import './App.css';
 
 function App() {
+  const { comments, posts, loading, setComments } = useCommentsData();
+  const [searchQuery, setSearchQuery] = useState('');
+
+  if (loading) {
+    return (
+      <div className="loader">
+        <div className="spinner"></div>
+      </div>
+    );
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Navbar searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
+      <CommentsTable
+        comments={comments}
+        posts={posts}
+        setComments={setComments}
+        searchQuery={searchQuery}
+      />
     </div>
   );
 }
-
 export default App;

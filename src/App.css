@@ -1,38 +1,181 @@
+body {
+  background: #f4f6f8;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
 .App {
-  text-align: center;
+  max-width: 1200px;
+  margin: auto;
+  padding: 20px;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #2f3e46;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 10px;
+  flex-wrap: wrap;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+.navbar input {
+  padding: 8px 12px;
+  border-radius: 20px;
+  border: none;
+  width: 250px;
+  margin-top: 10px;
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    justify-content: center;
+  }
+
+  .navbar input {
+    width: 80%;
+    margin-top: 10px;
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+.table-container {
+  overflow-x: auto;
+  margin-top: 20px;
+}
+
+.table-container::-webkit-scrollbar {
+  height: 8px;
+}
+
+.table-container::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 10px;
+}
+
+.table-container::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+table {
+  min-width: 700px;
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+th, td {
+  padding: 12px 16px;
+  text-align: left;
+  vertical-align: top;
+}
+
+th {
+  background: #354f52;
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+td {
+  border-bottom: 1px solid #ddd;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.editable-cell {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.editable-cell textarea {
+  width: 100%;
+  min-height: 50px;
+  resize: none;
+  padding: 6px 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-family: inherit;
+}
+
+.action-icon {
+  cursor: pointer;
+  font-size: 18px;
+}
+
+.edit-notice {
+  margin-top: 15px;
+  font-size: 14px;
+  color: #555;
+  text-align: center;
+}
+
+.pagination {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.pagination button {
+  padding: 8px 16px;
+  border: none;
+  background: #2f3e46;
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+}
+.clear-btn {
+  padding: 8px 12px;
+  border-radius: 20px;
+  border: none;
+  background: #e63946;
+  color: white;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.clear-btn:hover {
+  background: #b72b36;
+}
+
+
+.pagination button:disabled {
+  background: #ccc;
+}
+.pagination button:hover:not(:disabled) {
+  background: #3b5f65;
+  transform: translateY(-2px);
+}
+.loader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
+}
+
+.loader .spinner {
+  border: 6px solid #f3f3f3;
+  border-top: 6px solid #2f3e46;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+.edit-notice {
+  background: #e0f7ff;
+  padding: 12px 16px;
+  margin-top: 15px;
+  font-size: 14px;
+  color: #333;
+  text-align: center;
+  border-radius: 8px;
+  border: 1px solid #bde4f0;
 }
